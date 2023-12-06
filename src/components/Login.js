@@ -38,7 +38,7 @@ function Login() {
     }
     console.log(dbdata,"3939")
     const handledbdataupdate=(item)=>{
-        const updateddata = {...item,firstName:"XYZ"}
+        const updateddata = {...item,firstName:"ABS"}
         fetch('http://localhost:5000/putupdate/'+item._id,{
             method:"PUT",
             mode:"cors",
