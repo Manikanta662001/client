@@ -48,7 +48,6 @@ function Apipost() {
             <label>Password : </label>
             <input type='password' placeholder='Enter Password' name='password' onChange={(e)=>handleChange(e)} value={password}/><br/><br/>
             <input type='submit' value={"register"}/><br/><br/>
-
         </form>
     </div>
   )
