@@ -37,8 +37,8 @@ function Login() {
         .catch((err)=>console.log(err,"LOGIN ERROR"))
     }
     console.log(dbdata,"3939")
-    const handledbdataupdate=(item)=>{
-        const updateddata = {...item,firstName:"ABS"}
+    const handledbdataupdate=(item,index)=>{
+        const updateddata = {...item,firstName:"ZZZZ"}
         fetch('http://localhost:5000/putupdate/'+item._id,{
             method:"PUT",
             mode:"cors",
@@ -48,7 +48,12 @@ function Login() {
             body:JSON.stringify(updateddata)
         })
         .then((res)=>res.json())
-        .then((dt)=>console.log(dt,"UPDATED DATA"))
+        .then((dt)=>{
+            let updated = dbdata
+            updated[index] = dt
+            setDbdata(updated)
+            console.log(dt,updated,"UPDATED DATA")
+        })
         .catch((err)=>console.log(err,"UPDATED ERROR"))
     }
     const handledbdatadelete=(item)=>{
@@ -64,6 +69,7 @@ function Login() {
         .then((dt)=>console.log(dt,"DELETED DATA"))
         .catch((err)=>console.log(err,"DELETED ERROR"))
     }
+    console.log(dbdata,"72")
   return (
     <div>
         <h1>Login Page</h1>
@@ -76,17 +82,17 @@ function Login() {
 
         </form>
         <button onClick={()=>handledbdata()}>getdbdata</button>
-        {
-            dbdata.length>0 && 
-            dbdata.map((item)=>{
+        { 
+            dbdata.map((item,index)=>{
                 return(
                     <div>
-                        <p>{item.id}</p>
+                        <p>{item._id}</p>
                         <p>{item.firstName}</p>
                         <p>{item.lastName}</p>
                         <p>{item.email}</p>
                         <p>{item.password}</p>
-                        <button onClick={()=>handledbdataupdate(item)}>Update</button>
+                        <img src={item.profileImageUrl} alt='img'/>
+                        <button onClick={()=>handledbdataupdate(item,index)}>Update</button>
                         <button onClick={()=>handledbdatadelete(item)}>Delete</button>
                     </div>
                 )
