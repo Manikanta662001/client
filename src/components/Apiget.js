@@ -18,7 +18,7 @@ function Apiget() {
                         <div>
                         <p>{item.id}</p>
                         <p>{item.description}</p>
-                        <img src={item["image-url"]}/>
+                        <img src={item["image-url"]} alt='img'/>
                         
                     </div>
                     <br/>

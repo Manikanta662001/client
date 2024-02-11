@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Apiget from './components/Apiget';
 import Apipost from './components/Apipost';
